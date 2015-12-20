@@ -7,6 +7,9 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	<display-name>ms</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
+		<welcome-file>
+			/index.jsp
+		</welcome-file>
 	</welcome-file-list>
 
 
@@ -55,7 +58,7 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	
+
 	<!-- session生命周期延长到jsp -->
 	<filter>
 		<filter-name>openSession</filter-name>
