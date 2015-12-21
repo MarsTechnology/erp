@@ -1,28 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="zh-CN">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>首页</title>
-   <script src="./jQuery/jquery.min.js"></script>
-   <script src="./bootstrap/js/bootstrap.min.js"></script>
-   <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
-<style type="text/css">
-.cover {
-	position: fixed;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-	filter: alpha(opacity = 60);
-	background-color: #777;
-	z-index: 1002;
-	left: 0px;
-	display: none;
-	opacity: 0.5;
-	-moz-opacity: 0.5;
-}
-</style>
+   <script src="./bootstrap-3.3.5/dist/js/jquery.min.js"></script>
+   <script src="./bootstrap-3.3.5/dist/js/bootstrap.min.js"></script>
+   <link href="./bootstrap-3.3.5/dist/css/bootstrap.min.css" rel="stylesheet"></link>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#go").on('click', function() {
@@ -93,18 +79,38 @@
 	<div class="container">
 
       <form class="form-signin">
-        <h2>登录</h2>
-        <input type="text" id="username" class="form-control" placeholder="请输入用户名" required autofocus>
-        <input type="password" id="password" class="form-control" placeholder="请输入密码" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> 记住我一周
-          </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
-        <div class="form-group">
-		     <a href="#">忘记密码</a>
-        </div>
+		 
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4"><h2 align="center">登录</h2></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
+				<input type="text" id="username" class="form-control" placeholder="请输入用户名" required autofocus>
+			</div>
+		</div>
+        <div class="row">
+			<div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
+				<input type="password" id="password" class="form-control" placeholder="请输入密码" required>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-4 col-md-2 col-md-offset-4 checkbox">
+				 <label>
+					<input type="checkbox" value="remember-me"> 记住我一周
+				  </label>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 ">
+				<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2 col-sm-offset-7 col-md-2 col-md-offset-7">
+				<a href="#"> 忘记密码</a>
+			</div>
+		</div>
       </form>
 
     </div> <!-- /container -->
