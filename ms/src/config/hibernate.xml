@@ -13,8 +13,8 @@
 		<!-- oracle -->
 		<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/> 
 			<property name="url" value="jdbc:oracle:thin:@localhost:1521:ORCL"/> -->
-		<property name="username" value="root"></property>
-		<property name="password" value="root"></property>
+		<property name="username" value="glzp"></property>
+		<property name="password" value="glzp"></property>
 	</bean>
 
 	<!-- session工厂 --> 
@@ -29,7 +29,7 @@
 				<!-- oracle 10g方言 -->
 				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop> -->
 				<!-- 自动更新表结构 -->
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<!-- 控制台打印sql -->
 				<prop key="hibernate.show_sql">true</prop>
 				<!-- sql语句格式化 -->
@@ -62,6 +62,7 @@
 			<props>
 				<!-- 方法名称 -->
 				<prop key="add*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-Exception</prop>
 				<prop key="update*">PROPAGATION_REQUIRED,-Exception</prop>
 				<prop key="insert*">PROPAGATION_REQUIRED,-Exception</prop>
 				<prop key="modify*">PROPAGATION_REQUIRED,-Exception</prop>
