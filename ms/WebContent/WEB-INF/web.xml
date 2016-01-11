@@ -69,6 +69,11 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 		<filter-name>openSession</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<!-- 服务启动/关闭监听 -->
+	<listener>
+		<listener-class>com.ms.common.listener.ApplicationContextListener</listener-class>
+	</listener>
 </web-app>
 
 
