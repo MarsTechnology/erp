@@ -6,9 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>首页</title>
-   <script src="./bootstrap-3.3.5/dist/js/jquery.min.js"></script>
-   <script src="./bootstrap-3.3.5/dist/js/bootstrap.min.js"></script>
-   <link href="./bootstrap-3.3.5/dist/css/bootstrap.min.css" rel="stylesheet"></link>
+   <script src="./jQuery/jquery.min.js"></script>
+   <script src="./bootstrap/js/bootstrap.min.js"></script>
+   <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#go").on('click', function() {
