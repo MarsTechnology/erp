@@ -11,6 +11,15 @@
 		<!-- 角色表 -->
 		<mapping class="com.ms.rbac.entity.Role" />
 		<!-- 用户角色表 -->
-        <mapping class="com.ms.rbac.entity.UserRole" />
-     </session-factory>
+		<mapping class="com.ms.rbac.entity.UserRole" />
+		<!-- 菜单表 -->
+		<mapping class="com.ms.rbac.entity.Menu" />
+		<!-- 许可表 -->
+		<mapping class="com.ms.rbac.entity.Permission" />
+		<!-- 资源表 -->
+		<mapping class="com.ms.rbac.entity.Resource" />
+		<!-- 角色许可表 -->
+		<mapping class="com.ms.rbac.entity.RolePermission" />
+		
+	</session-factory>
 </hibernate-configuration>
