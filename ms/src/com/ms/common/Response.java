@@ -2,7 +2,7 @@ package com.ms.common;
 
 import java.util.List;
 
-import com.ms.common.enume.Status;
+import com.ms.common.enums.Status;
 
 public class Response {
 

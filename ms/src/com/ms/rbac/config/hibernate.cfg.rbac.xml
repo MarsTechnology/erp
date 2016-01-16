@@ -11,6 +11,6 @@
 		<!-- 角色表 -->
 		<mapping class="com.ms.rbac.entity.Role" />
 		<!-- 用户角色表 -->
-		<mapping class="com.ms.rbac.entity.UserRole" />
-	</session-factory>
+        <mapping class="com.ms.rbac.entity.UserRole" />
+     </session-factory>
 </hibernate-configuration>

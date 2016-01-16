@@ -1,4 +1,4 @@
-package com.ms.common.enume;
+package com.ms.common.enums;
 
 public enum Status {
 

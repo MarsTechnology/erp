@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ms.rbac.entity.User;
 import com.ms.rbac.service.UserService;
@@ -19,16 +20,22 @@ public class RbacController {
 	@Resource(name="userService")
 	private UserService userService;
 	/**
-	 * Ôö¼ÓÓÃ»§controller
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½controller
 	 * @return
 	 */
+	@RequestMapping("/main")
+	public ModelAndView main(){
+		
+		return new ModelAndView("rbac/main");
+	}
+	
 	@RequestMapping("/toAddUser")
 	public String toAddUser(){
 		userService.initAddUser();
 		return "/rbac/addUser";
 	}
 	/**
-	 * µÇÂ¼controller
+	 * ï¿½ï¿½Â¼controller
 	 * @return
 	 */
 	@RequestMapping("tologin")
@@ -46,6 +53,12 @@ public class RbacController {
 		//user.setId("1");
 		userService.saveUser(user);
 		return "/rbac/addUser";
+	}
+	
+	@RequestMapping("groups")
+	public ModelAndView groupsView(){
+		ModelAndView mv = new ModelAndView("/rbac/groups");
+		return mv;
 	}
 
 }
