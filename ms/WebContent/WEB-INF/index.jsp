@@ -6,43 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>首页</title>
-   <script src="./jQuery/jquery.min.js"></script>
-   <script src="./bootstrap/js/bootstrap.min.js"></script>
-   <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
+   <script src="${pageContext.request.contextPath}/webresource/jQuery/jquery.min.js"></script>
+   <script src="${pageContext.request.contextPath}/webresource/bootstrap/js/bootstrap.min.js"></script>
+   <link href="${pageContext.request.contextPath}/webresource/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#go").on('click', function() {
-			alert("请登录");
-			$("#username").focus();
-		});
-		$("#register").on('click', function() {
-			 
-			
-		});
-		$("#save").on('click', function() {
-			 var username = $("#username").val();
-			 var password = $("#password").val();
-			 var email = $("#email").val();
-			var user={};
-			user.userName = username;
-			user.password = password;
-			user.email = email;
-			$.ajax({
-				type : "POST",
-				url : "/data/user",
-				data : user,
-				dataType : "json",
-				success : function(result) {
-					alert(result);
-				},
-				error : function(result) {
-					alert("error");
-				}
-			});
-		});
-		$("#cancle").on('click', function() {
-			 
-		});
 		
 	});
 </script>
@@ -78,19 +46,18 @@
 	
 	<div class="container">
 
-      <form class="form-signin">
-		 
+      <form class="form-signin" method="get" action="${pageContext.request.contextPath}/validate">
 		<div class="row">
 			<div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4"><h2 align="center">登录</h2></div>
 		</div>
 		<div class="row">
 			<div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
-				<input type="text" id="username" class="form-control" placeholder="请输入用户名" required autofocus>
+				<input type="text" id="username" name="username" class="form-control" placeholder="请输入用户名" required autofocus>
 			</div>
 		</div>
         <div class="row">
 			<div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
-				<input type="password" id="password" class="form-control" placeholder="请输入密码" required>
+				<input type="password" id="password" name="password" class="form-control" placeholder="请输入密码" required>
 			</div>
 		</div>
 		<div class="row">

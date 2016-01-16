@@ -5,20 +5,30 @@
 http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
 	<display-name>ms</display-name>
-	<welcome-file-list>
+	<!-- <welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>
 			/index.jsp
 		</welcome-file>
 	</welcome-file-list>
-
+ -->
 
 	<!-- 配置文件 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath*:config/*.xml</param-value>
 	</context-param>
-
+	
+    <filter>
+		<filter-name>authenticationFilter</filter-name>
+		<filter-class>com.ms.common.filter.AuthenticationFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>authenticationFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
 	<!-- 编码 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
