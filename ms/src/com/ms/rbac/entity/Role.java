@@ -25,7 +25,8 @@ public class Role extends BaseEntity {
 	private String parentId;
 	//用户角色
 	private List<UserRole> userRoles;
-	
+	//角色许可
+	private List<RolePermission> rps;
 
 	public Role() {
 	}
@@ -53,6 +54,16 @@ public class Role extends BaseEntity {
 	
 	public void setUserRoles(List<UserRole> userRoles) {
 		this.userRoles = userRoles;
+	}
+	
+	@OneToMany(mappedBy = "permission",cascade = {CascadeType.ALL},
+			fetch = FetchType.LAZY) 
+	public List<RolePermission> getRps() {
+		return rps;
+	}
+	
+	public void setRps(List<RolePermission> rps) {
+		this.rps = rps;
 	}
 	
 }
