@@ -13,8 +13,8 @@
 <body>
 <h>添加用户</h>
 	<form name="userForm" action="/ms/rbac/addUser" method="post">
-		姓名：<input type="text" name=username>
-		年龄：<input type="text" name="password">
+		姓名：<input type="text" name=logName>
+		年龄：<input type="text" name="groupId">
 		
 		<input type="button" value="添加" onclick="addUser()">
 		

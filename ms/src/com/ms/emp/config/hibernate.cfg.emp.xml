@@ -5,8 +5,6 @@
 <hibernate-configuration>
 	<session-factory>
 		<!-- 部门表 -->
-		<mapping class="com.ms.rbac.entity.Group" />
-		<!-- 用户表 -->
-		<mapping class="com.ms.rbac.entity.User" />
+		<!-- <mapping class="com.ms.emp.entity.Emp" /> -->
 	</session-factory>
 </hibernate-configuration>
