@@ -45,9 +45,9 @@ public class NavigatorController {
 			mv = new ModelAndView("main", "response", response);
 			session.setAttribute(Constants.LOGIN_SESSION_KEY, dbuser.getLogName());
 		}else {
-//			session.setAttribute(Constants.LOGIN_SESSION_KEY, "abc");
-//			mv = new ModelAndView("redirect:rbac/main", "response", response);
-			mv = new ModelAndView("redirect:/");
+			session.setAttribute(Constants.LOGIN_SESSION_KEY, "abc");
+			mv = new ModelAndView("redirect:rbac/main", "response", response);
+			//mv = new ModelAndView("redirect:/");
 		}
 		return mv;
 	}
@@ -61,7 +61,7 @@ public class NavigatorController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/menuJson", method = RequestMethod.GET)
+	@RequestMapping(value = "/menuJson", method = RequestMethod.GET, produces = {"text/json;charset=UTF-8"})
 	public @ResponseBody String getMenuJson(){
 		
 		String temp = "[{\"id\":1, \"pid\":0, \"name\":\"权限管理\", \"open\":\"false\"},"

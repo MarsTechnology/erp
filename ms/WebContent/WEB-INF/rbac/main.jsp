@@ -122,7 +122,7 @@ body {
 		</div>
 		<div id="" class="col-md-10" style="height:550px;">
 			<iframe id="main-workspace" style="width:100%;height:550px;" 
-			frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes" src="dashboard.html">
+			frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes">
 			
 			</iframe>
 		</div>
