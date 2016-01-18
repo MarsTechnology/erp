@@ -110,7 +110,7 @@ body {
 	<div id="navbar" class="navbar-collapse collapse">
 	  <ul class="nav navbar-nav navbar-right"> 
 		<li><a class="navbar-brand" href="#">个人信息</a></li>
-		<li><a class="navbar-brand" href="#">退出</a></li>
+		<li><a class="navbar-brand" href="${pageContext.request.contextPath}/logout">退出</a></li>
 	  </ul>
 	</div>
   </div>
