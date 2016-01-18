@@ -44,7 +44,8 @@ public class RbacController {
 	}
 
 	@RequestMapping("login")
-	public String login(){ 
+	public String login(User user){ 
+		
 		return "/rbac/main";
 	}
 	

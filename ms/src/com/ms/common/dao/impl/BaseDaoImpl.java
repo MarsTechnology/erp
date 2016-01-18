@@ -13,7 +13,7 @@ import com.ms.common.dao.BaseDao;
 public class BaseDaoImpl<T> implements BaseDao<T> {
 	// sessionFactory
 	private SessionFactory sessionFactory;
-	// 反射类对象
+	// 
 	private Class<T> clazz;
 
 	public BaseDaoImpl() {
@@ -46,10 +46,24 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		return null;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
-	public List<T> getAllByCondition(Map<String, String> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<T> getByCondition(Map<String, String> map) {
+		StringBuffer hql = new StringBuffer();
+		hql.append("from");
+		hql.append(clazz.getName());
+		hql.append("where 1= 1");
+		if (null != map) {
+			for (Map.Entry<String, String> entry :map.entrySet()) {
+				hql.append(" and ");
+				hql.append(entry.getKey());
+				hql.append(entry.getValue());
+			}
+		}
+		return sessionFactory.getCurrentSession()
+				.createQuery("from "+clazz.getName()).list();
 	}
 
 	@Override
@@ -59,9 +73,16 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	}
 
 	@Override
-	public List<T> getAll() {
-		return sessionFactory.getCurrentSession()
-				.createQuery("from "+clazz.getName()).list();
+	public List<Object> getBySQL(String sql) {
+		return sessionFactory.getCurrentSession().createSQLQuery(sql).list();
+	}
+
+	@Override
+	public List<T> getByProperty(String propertyName, Object value) {
+		String hql = "from "+clazz.getName()+" where "+propertyName+" = ?";
+		return sessionFactory.getCurrentSession().createQuery(hql)
+					.setParameter(0, value)
+					.list();
 	}
 
 }

@@ -10,42 +10,51 @@ public interface BaseDao<T> {
 	
 	
 	/**
-	 * ±£´æ¶ÔÏó
+	 * ä¿å­˜å¯¹è±¡æ¥å£
 	 * @param t
 	 */
 	void save(T t);
 	/**
-	 * ¸ù¾İidÉ¾³ı
+	 * æ ¹æ®å”¯ä¸€idåˆ é™¤
 	 * @param id
 	 */
 	void deleteById(Serializable id);
 	/**
-	 * ¸üĞÂ
+	 * åœ¨æ•°æ®å·²å­˜åœ¨çš„æƒ…å†µä¸‹æ›´æ–°
 	 * @param t
 	 */
 	void update(T t);
 	/**
-	 * ¸ù¾İID²éÑ¯¶ÔÏó
+	 * æ ¹æ®å”¯ä¸€idæŸ¥è¯¢
 	 * @param id
 	 * @return
 	 */
 	T getById(Serializable id);
 	/**
-	 * ¸ù¾İÌõ¼ş²éÑ¯³öËùÓĞ
-	 * @param map
+	 * æ ¹æ®æŸä¸€ä¸ªå­—æ®µè¿›è¡ŒæŸ¥è¯¢
+	 * @param propertyName å­—æ®µåç§°
+	 * @param value æ¡ä»¶å€¼
 	 * @return
 	 */
-	List<T> getAllByCondition(Map<String, String> map);
+	List<T> getByProperty(String propertyName,Object value);
 	/**
-	 * ¸ù¾İÌõ¼ş²éÑ¯·ÖÒ³½á¹û
-	 * @param map
+	 * æ ¹æ®æ¡ä»¶æŸ¥è¯¢æ‰€æœ‰æ»¡è¶³æ¡ä»¶çš„æ•°æ®ï¼Œæ— æ¡ä»¶åˆ™æŸ¥è¯¢æ‰€æœ‰çš„æ•°æ®
+	 * @param map mapä¸­keyå­˜æ”¾å­—æ®µåç§°ï¼Œvalueå­˜æ”¾æŸ¥è¯¢çš„æ¡ä»¶ ='admin'; !='admin'ï¼› like '%admin%'
+	 * @return
+	 */
+	List<T> getByCondition(Map<String, String> map);
+	/**
+	 * æ ¹æ®æ¡ä»¶åˆ†é¡µæŸ¥è¯¢æ•°æ®
+ 	 * @param map
 	 * @return
 	 */
 	Pager getPageByCondition(Map<String, String> map);
 	/**
-	 * ÎŞÌõ¼ş²éÑ¯³öËùÓĞÊı¾İ
+	 * æ ¹æ®ç›´æ¥æ ¹æ®æºç”Ÿsqlè¿›è¡ŒæŸ¥è¯¢
+	 * @param sql
 	 * @return
 	 */
-	List<T> getAll();
+	List<Object> getBySQL(String sql);
+	
 	
 }

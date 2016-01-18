@@ -36,18 +36,26 @@ public class NavigatorController {
 		User dbuser = null;
 		ModelAndView mv = null;
 		Response response = new Response();
-	//	User dbuser = userService.getUserByUserName(username);
+		dbuser = userService.getUserBylogName(username);
 		HttpSession session = request.getSession();
-		if (dbuser != null && password.equals(dbuser.getPassword())) {
+		if (dbuser != null ) {
 			// login success
-			response.setStatus(Status.FAIL);
-			response.setMessage(ErrorMessageConstants.AUTHENTICATION_ERROR);
-			mv = new ModelAndView("main", "response", response);
-			session.setAttribute(Constants.LOGIN_SESSION_KEY, dbuser.getLogName());
+			if (password.equals(dbuser.getPassword())) {
+				response.setStatus(Status.SUCCESS);
+				response.setMessage(ErrorMessageConstants.LOGIN_SUCCESS);
+				mv = new ModelAndView("redirect:rbac/main", "response", response);
+				session.setAttribute(Constants.LOGIN_SESSION_KEY, dbuser.getId());
+			}else {
+				//password error
+				response.setStatus(Status.FAIL);
+				response.setMessage(ErrorMessageConstants.AUTHENTICATION_ERROR);
+				mv = new ModelAndView("redirect:/", "response", response);
+			}
 		}else {
-			session.setAttribute(Constants.LOGIN_SESSION_KEY, "abc");
-			mv = new ModelAndView("redirect:rbac/main", "response", response);
-			//mv = new ModelAndView("redirect:/");
+			// user not exist
+			response.setStatus(Status.FAIL);
+			response.setMessage(ErrorMessageConstants.USERNOTEXIST_ERROR);
+			mv = new ModelAndView("redirect:/", "response", response);
 		}
 		return mv;
 	}
@@ -61,6 +69,10 @@ public class NavigatorController {
 		return mv;
 	}
 	
+	/**
+	 * 根据登录员权限进行菜单展示
+	 * @return
+	 */
 	@RequestMapping(value = "/menuJson", method = RequestMethod.GET, produces = {"text/json;charset=UTF-8"})
 	public @ResponseBody String getMenuJson(){
 		
