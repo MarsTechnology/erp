@@ -5,25 +5,25 @@ import com.ms.rbac.entity.User;
 public interface UserService {
 
 	/**
-	 * ÓÃ»§ÃûºÍÃÜÂëµÄĞ£Ñé
-	 * @param user
-	 * @return
-	 */
-	Boolean getUser(User user);
-	/**
-	 * ±£´æÒ»¸öÓÃ»§
+	 * ä¿å­˜ç”¨æˆ·
 	 * @param user
 	 */
 	void saveUser(User user);
 	/**
-	 * ¸üĞÂÓÃ»§×ÊÁÏ
+	 * æ›´æ–°ç”¨æˆ·
 	 * @param user
 	 */
 	void update(User user);
 	/**
-	 * Ôö¼ÓÓÃ»§³õÊ¼»¯·½·¨
+	 * åˆå§‹åŒ–æ·»åŠ ç”¨æˆ·
 	 */
 	void initAddUser();
+	/**
+	 * æ ¹æ®ç”¨æˆ·åè·å¾—ç”¨æˆ·å¯¹è±¡
+	 * @param logName
+	 * @return
+	 */
+	User getUserBylogName(String logName);
 	
 	
 }

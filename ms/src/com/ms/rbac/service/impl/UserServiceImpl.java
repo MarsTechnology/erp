@@ -1,5 +1,9 @@
 package com.ms.rbac.service.impl;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ms.rbac.dao.GroupDao;
@@ -24,11 +28,6 @@ public class UserServiceImpl implements UserService{
 		this.groupDao = groupDao;
 	}
 	
-	@Override
-	public Boolean getUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void saveUser(User user) {
@@ -41,13 +40,25 @@ public class UserServiceImpl implements UserService{
 		
 	}
 	/**
-	 * 增加用户初始化
+	 * 
 	 */
 	@Override
 	public void initAddUser() {
-		//查询出系统中现有的部门
-		groupDao.getAll();
+		groupDao.getByCondition(null);
 		
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public User getUserBylogName(String logName) {
+		List<User> users = userDao.getByProperty("logName", logName);
+		if (null != users && users.size() > 0) {
+			return users.get(0);
+		}else {
+			return null;
+		}
 	}
 
 }

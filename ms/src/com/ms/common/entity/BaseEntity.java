@@ -26,6 +26,7 @@ public class BaseEntity implements Serializable{
 	private Date modifyTime;
 	//¥¥Ω®»À
 	private String createUser;
+	
 	public BaseEntity() {
 		super();
 	}
@@ -43,6 +44,7 @@ public class BaseEntity implements Serializable{
 	}
 	
 	@Temporal(TemporalType.TIMESTAMP) 
+	@Column(nullable = false)
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -56,7 +58,7 @@ public class BaseEntity implements Serializable{
 	public void setModifyTime(Date modifyTime) {
 		this.modifyTime = modifyTime;
 	}
-	@Column(length = 32)
+	@Column(length = 32,nullable = false)
 	public String getCreateUser() {
 		return createUser;
 	}
