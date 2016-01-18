@@ -9,9 +9,10 @@
 <script src="${pageContext.request.contextPath}/webresource/jQuery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/webresource/bootstrap/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/webresource/bootstrap/js/jquery.ztree.all-3.5.min.js"></script>
+<script src="${pageContext.request.contextPath}/webresource/bootstrap/js/jquery.dataTables.js"></script>
+<script src="${pageContext.request.contextPath}/webresource/jQuery/common.js"></script>
 <link href="${pageContext.request.contextPath}/webresource/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
-<link href="${pageContext.request.contextPath}/webresource/bootstrap/css/metro.css" rel="stylesheet"></link>
-<style>
+<link href="${pageContext.request.contextPath}/webresource/bootstrap/css/metro.css" rel="stylesheet"></link><style>
 .none-padding {
 	padding: 0 !important;
     margin: 0 !important;
@@ -84,6 +85,20 @@ body {
 	}
     $(document).ready(function(){
 	    onLoadZTree();
+	    //logout
+	    $('#logout').on('click', function() {
+    	showConfirmBox(
+	   			'确认',
+	   			'确定要退出吗?',
+	   			'否，点错了',
+	  			'是，过会儿再来',
+	   			function(){
+	   				window.location.href='${pageContext.request.contextPath}/logout';
+	   				}
+	        )
+		});
+	    
+	    
     });
 
     function loadReady() {
@@ -95,7 +110,8 @@ body {
         demoIframe.height(h);
     }
 </script>
-
+<!-- modal -->
+<jsp:include page="boxes.jsp" />
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
 	<div class="navbar-header">
@@ -110,7 +126,7 @@ body {
 	<div id="navbar" class="navbar-collapse collapse">
 	  <ul class="nav navbar-nav navbar-right"> 
 		<li><a class="navbar-brand" href="#">个人信息</a></li>
-		<li><a class="navbar-brand" href="#">退出</a></li>
+		<li><a id="logout" class="navbar-brand" href="#">退出</a></li>
 	  </ul>
 	</div>
   </div>

@@ -7,8 +7,11 @@
 <script src="${pageContext.request.contextPath}/webresource/jQuery/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/webresource/bootstrap/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/webresource/bootstrap/js/jquery.ztree.all-3.5.min.js"></script>
+<script src="${pageContext.request.contextPath}/webresource/bootstrap/js/jquery.dataTables.js"></script>
 <link href="${pageContext.request.contextPath}/webresource/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
 <link href="${pageContext.request.contextPath}/webresource/bootstrap/css/metro.css" rel="stylesheet"></link>
+<link href="${pageContext.request.contextPath}/webresource/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet"></link>
+
 <style>
 .none-padding {
 	padding: 0 !important;
@@ -18,12 +21,20 @@
 </head>
 <body>
 <script>
-    
+$(document).ready(function() {
+	
+	$("#groupTable").dataTable({
+		 
+	});
+	
+});
+
 </script>
 <div class="container-fluid none-padding">
  
 	<div class="row-fluid " style="height:70%;">
-		 <table class="table" contenteditable="true">
+	<button id="btnToAdd" class="btn btn-primary" data-toggle="modal" href="#responsive">添加用户组</button>
+		 <table id="groupTable" class="table table-striped">
 			<thead>
 			<tr>
 			<th>编号</th>
