@@ -5,6 +5,6 @@
 
 <beans>
 
-	<import resource="classpath*:com/ms/rbac/config/springMVC-rbac.xml" />
+	<!-- <import resource="classpath*:com/ms/rbac/config/springMVC-rbac.xml" /> -->
 
 </beans>

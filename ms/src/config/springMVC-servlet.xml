@@ -13,7 +13,7 @@
 	<mvc:annotation-driven />
 	
 	<!-- 注解扫描包 -->
-	<context:component-scan base-package="com.ms.rbac.controller" />
+	<context:component-scan base-package="com.ms" />
 
 	<!-- 静态资源访问 -->
 	<mvc:resources location="/img/" mapping="/img/**" />
