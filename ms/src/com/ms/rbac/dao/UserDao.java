@@ -1,11 +1,14 @@
 package com.ms.rbac.dao;
 
+import org.springframework.stereotype.Repository;
+
 import com.ms.common.dao.BaseDao;
 import com.ms.rbac.entity.User;
 
+
 public interface UserDao extends BaseDao<User> {
 	/**
-	 * ¸ù¾İÓÃ»§ÃûºÍÃÜÂë²éÑ¯
+	 * ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯
 	 * @param user
 	 * @return
 	 */
