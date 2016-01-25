@@ -6,14 +6,17 @@ import java.util.List;
 import java.util.Map;
 
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ms.common.Pager;
 import com.ms.common.dao.BaseDao;
 
 public class BaseDaoImpl<T> implements BaseDao<T> {
 	// sessionFactory
+	@Autowired
 	private SessionFactory sessionFactory;
-	// 
+	
+	// 反射出的类
 	private Class<T> clazz;
 
 	public BaseDaoImpl() {
@@ -43,7 +46,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	@Override
 	public T getById(Serializable id) {
-		return null;
+		return (T) sessionFactory.getCurrentSession().get(clazz, id);
 	}
 
 	/**

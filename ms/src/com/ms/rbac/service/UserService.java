@@ -1,5 +1,7 @@
 package com.ms.rbac.service;
 
+import java.io.Serializable;
+
 import com.ms.rbac.entity.User;
 
 public interface UserService {
@@ -24,6 +26,12 @@ public interface UserService {
 	 * @return
 	 */
 	User getUserBylogName(String logName);
+	/**
+	 * 根据id获取用户对象
+	 * @param id
+	 * @return
+	 */
+	User getUserByid(Serializable id);
 	
 	
 }

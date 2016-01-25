@@ -2,6 +2,7 @@ package com.ms.rbac.controller;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,7 +19,7 @@ import com.ms.rbac.service.UserService;
 @Controller
 @RequestMapping("/rbac/groupController")
 public class GroupController { 
-	@Resource(name="groupService")
+	@Autowired
 	private GroupService groupService;
 	
 	@RequestMapping("/toAddGroup")

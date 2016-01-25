@@ -42,7 +42,7 @@ public class AuthenticationFilter implements Filter{
 	            chain.doFilter(request, response);
 	        } else {
 	        	
-	        	Object loginId = httpReq.getSession().getAttribute(Constants.LOGIN_SESSION_KEY);
+	        	Object loginId = httpReq.getSession().getAttribute(Constants.SESSION_USER_KEY);
 	        	if (loginId != null) {
 	        		chain.doFilter(request, response);
 	        	} else {

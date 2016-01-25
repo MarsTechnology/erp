@@ -15,20 +15,28 @@ import org.hibernate.annotations.GenericGenerator;
 public class BaseEntity implements Serializable{
 
 	/**
-	 * ÊµÌåÀàµÄ¸¸Àà
+	 * Êµï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½
 	 */
 	private static final long serialVersionUID = -4295426802999880307L;
-	// id ²ÉÓÃuuidÉú³É·½·¨Ã»ÓĞÒâÒå
+	/**
+	 * id é‡‡ç”¨uuidç”Ÿæˆæ–¹å¼
+	 */
 	private String  id;
-	//´´½¨Ê±¼ä
+	/**
+	 * æ¯æ¡æ•°æ®çš„åˆ›å»ºæ—¶é—´
+	 */
 	private Date createTime;
-	//×îºóĞŞ¸ÄÊ±¼ä
+	/**
+	 * æ•°æ®åœ¨åšæ›´æ–°æ“ä½œæ—¶çš„æ—¶é—´
+	 */
 	private Date modifyTime;
-	//´´½¨ÈË
+	/**
+	 * æ•°æ®åˆ›å»ºäºº
+	 */
 	private String createUser;
 	
 	public BaseEntity() {
-		super();
+		this.modifyTime = new Date();
 	}
 	
 	@Id

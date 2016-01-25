@@ -5,7 +5,7 @@
 
 <beans>
 	<!-- user -->
-	<bean id="userDao" class="com.ms.rbac.dao.impl.UserDaoImpl">
+	<!-- <bean id="userDao" class="com.ms.rbac.dao.impl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
@@ -15,9 +15,9 @@
 	
 	<bean id="userService" parent="transactionBese">
 		<property name="target" ref="userServiceImpl"></property>
-	</bean>
+	</bean> -->
 	<!-- group -->
-	<bean id="groupDao" class="com.ms.rbac.dao.impl.GroupDaoImpl">
+	<!-- <bean id="groupDao" class="com.ms.rbac.dao.impl.GroupDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
@@ -27,6 +27,6 @@
 	
 	<bean id="groupService" parent="transactionBese">
 		<property name="target" ref="groupServiceImpl"></property>
-	</bean>
+	</bean> -->
 	
 </beans>

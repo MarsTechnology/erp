@@ -1,18 +1,22 @@
 package com.ms.rbac.service.impl;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ms.rbac.dao.GroupDao;
 import com.ms.rbac.dao.UserDao;
 import com.ms.rbac.entity.User;
 import com.ms.rbac.service.UserService;
 
+@Service
 public class UserServiceImpl implements UserService{
 	
+	@Autowired
 	private UserDao userDao;
 	@Autowired
 	private GroupDao groupDao;
@@ -20,15 +24,6 @@ public class UserServiceImpl implements UserService{
 	public UserServiceImpl() {
 	}
 	
-	public void setUserDao(UserDao userDao) {
-		this.userDao = userDao;
-	}
-	
-	public void setGroupDao(GroupDao groupDao) {
-		this.groupDao = groupDao;
-	}
-	
-
 	@Override
 	public void saveUser(User user) {
 		this.userDao.save(user);
@@ -59,6 +54,11 @@ public class UserServiceImpl implements UserService{
 		}else {
 			return null;
 		}
+	}
+
+	@Override
+	public User getUserByid(Serializable id) {
+		return userDao.getById(id);
 	}
 
 }

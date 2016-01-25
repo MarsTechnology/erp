@@ -1,20 +1,26 @@
 package com.ms.rbac.service;
 
+import java.util.List;
+
 import com.ms.rbac.entity.Group;
-import com.ms.rbac.entity.User;
 
 public interface GroupService {
 
 	/**
-	 * ±£´æÒ»¸ö²¿ÃÅ
+	 * æ–°å¢éƒ¨é—¨
 	 * @param group
 	 */
 	void saveGroup(Group group);
 	/**
-	 * ¸üĞÂ²¿ÃÅĞÅÏ¢
+	 * æ›´æ–°éƒ¨é—¨
 	 * @param group
 	 */
 	void updateGroup(Group group);
+	/**
+	 * è·å–æ‰€æœ‰éƒ¨é—¨
+	 * @return
+	 */
+	List<Group> getAll();
 	
 	
 }
