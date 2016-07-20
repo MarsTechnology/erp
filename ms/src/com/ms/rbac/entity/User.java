@@ -11,42 +11,46 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 import com.ms.common.entity.BaseEntity;
 
 @Entity
 @Table(name = "RBAC_USER")
+@Data
 public class User extends BaseEntity {
 
 	private static final long serialVersionUID = 2698479255878048424L;
-	//µÇÂ¼Ãû³Æ
+	// ï¿½ï¿½Â¼ï¿½ï¿½ï¿½
 	private String logName;
-	// ÃÜÂë
+	// ï¿½ï¿½ï¿½ï¿½
 	private String password;
-	// ÓÊÏä
+	// ï¿½ï¿½ï¿½ï¿½
 	private String email;
-	// ×´Ì¬Ëø
-	/*@Column(length = 32)
-	private String lock;*/
-	//Ô±¹¤
-	//private Emp emp;
-	//²¿ÃÅ
+	// ×´Ì¬ï¿½ï¿½
+	/*
+	 * @Column(length = 32) private String lock;
+	 */
+	// Ô±ï¿½ï¿½
+	// private Emp emp;
+	// ï¿½ï¿½ï¿½ï¿½
 	private Group group;
-	//ÓÃ»§½ÇÉ«
+	// ï¿½Ã»ï¿½ï¿½ï¿½É«
 	private List<UserRole> userRoles;
-	
+
 	public User() {
 	}
-	
-	@Column(length = 50,nullable = false)
+
+	@Column(length = 50, nullable = false)
 	public String getLogName() {
 		return logName;
 	}
-	
+
 	public void setLogName(String logName) {
 		this.logName = logName;
 	}
-	
-	@Column(length = 30,nullable = false)
+
+	@Column(length = 30, nullable = false)
 	public String getPassword() {
 		return password;
 	}
@@ -54,6 +58,7 @@ public class User extends BaseEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	@Column(length = 50)
 	public String getEmail() {
 		return email;
@@ -63,39 +68,35 @@ public class User extends BaseEntity {
 		this.email = email;
 	}
 
-	
-	/*public String getLock() {
-		return lock;
-	}
-
-	public void setLock(String lock) {
-		this.lock = lock;
-	}*/
-//	@OneToOne(fetch = FetchType.EAGER) //ÕâÊÇÄ¬ÈÏÖµ
-//	@JoinColumn(name = "empId", nullable = false)
-//	public Emp getEmp() {
-//		return emp;
-//	}
-//	
-//	public void setEmp(Emp emp) {
-//		this.emp = emp;
-//	}
-	@ManyToOne(fetch = FetchType.EAGER) 
+	/*
+	 * public String getLock() { return lock; }
+	 * 
+	 * public void setLock(String lock) { this.lock = lock; }
+	 */
+	// @OneToOne(fetch = FetchType.EAGER) //ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Öµ
+	// @JoinColumn(name = "empId", nullable = false)
+	// public Emp getEmp() {
+	// return emp;
+	// }
+	//
+	// public void setEmp(Emp emp) {
+	// this.emp = emp;
+	// }
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "groupId", nullable = false)
 	public Group getGroup() {
 		return group;
 	}
-	
+
 	public void setGroup(Group group) {
 		this.group = group;
 	}
-	
-	@OneToMany(mappedBy = "user",cascade = {CascadeType.ALL},
-			fetch = FetchType.LAZY) 
+
+	@OneToMany(mappedBy = "user", cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
 	public List<UserRole> getUserRoles() {
 		return userRoles;
 	}
-	
+
 	public void setUserRoles(List<UserRole> userRoles) {
 		this.userRoles = userRoles;
 	}

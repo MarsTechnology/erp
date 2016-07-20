@@ -13,8 +13,8 @@
 		<!-- oracle -->
 		<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/> 
 			<property name="url" value="jdbc:oracle:thin:@localhost:1521:ORCL"/> -->
-		<property name="username" value="glzp"></property>
-		<property name="password" value="glzp"></property>
+		<property name="username" value="erp"></property>
+		<property name="password" value="erp"></property>
 	</bean>
 
 	<!-- session工厂 --> 
@@ -49,18 +49,18 @@
 	</bean>
 
 	<!-- 事务控制 -->
-	<bean id="transactionManager"
+	<!-- <bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
+	</bean> -->
 
-	<bean id="transactionBese"
+	<!-- <bean id="transactionBese"
 		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
 		lazy-init="true" abstract="true">
 		<property name="transactionManager" ref="transactionManager"></property>
 		<property name="transactionAttributes">
 			<props>
-				<!-- 方法名称 -->
+				方法名称
 				<prop key="add*">PROPAGATION_REQUIRED,-Exception</prop>
 				<prop key="save*">PROPAGATION_REQUIRED,-Exception</prop>
 				<prop key="update*">PROPAGATION_REQUIRED,-Exception</prop>
@@ -70,5 +70,7 @@
 				<prop key="get*">PROPAGATION_NEVER</prop>
 			</props>
 		</property>
-	</bean>
+	</bean> -->
+	<!-- <tx:annotation-driven transaction-manager="transactionManager" /> -->
+	
 </beans>
