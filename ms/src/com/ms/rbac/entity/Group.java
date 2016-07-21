@@ -17,7 +17,7 @@ import com.ms.common.entity.BaseEntity;
 @Entity
 @Table(name = "RBAC_GROUP")
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 public class Group extends BaseEntity {
 
 	/**
@@ -28,43 +28,20 @@ public class Group extends BaseEntity {
 	/**
 	 * 上级部门
 	 */
+	@Column(length = 32, nullable = false)
 	private String parentId;
 	/**
 	 * 部门名称
 	 */
+	@Column(length = 50, nullable = false, unique = true)
 	private String groupName;
 	/**
 	 * 用户
 	 */
+	@OneToMany(mappedBy = "group", cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
 	private List<User> users;
 
 	public Group() {
 	}
 
-	@Column(length = 32, nullable = false)
-	public String getParentId() {
-		return parentId;
-	}
-
-	public void setParentId(String parentId) {
-		this.parentId = parentId;
-	}
-
-	@Column(length = 50, nullable = false, unique = true)
-	public String getGroupName() {
-		return groupName;
-	}
-
-	public void setGroupName(String groupName) {
-		this.groupName = groupName;
-	}
-
-	@OneToMany(mappedBy = "group", cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
 }
