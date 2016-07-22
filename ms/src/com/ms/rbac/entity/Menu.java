@@ -9,72 +9,48 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import com.ms.common.entity.BaseEntity;
 
 @Entity
 @Table(name = "RBAC_MENU")
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class Menu extends BaseEntity {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -124854113194012537L;
-	//∏∏≤Àµ•id
+	/**
+	 * ‰∏äÁ∫ßid
+	 */
+	@Column(length = 32, nullable = false)
 	private String parentId;
-	//≤Àµ•√˚≥∆
+	/**
+	 * ËèúÂçïÂêçÁß∞
+	 */
+	@Column(length = 50, nullable = false)
 	private String menuName;
-	//–Ìø…
+	/**
+	 * ËÆ∏ÂèØ
+	 */
+	@OneToMany(mappedBy = "menu", cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
 	private List<Permission> permissions;
-	//’π æÀ≥–Ú
+	/**
+	 * Â±ïÁ§∫È°∫Â∫è
+	 */
+	@Column(length = 3, nullable = false)
 	private Integer dispalyIndex;
-	//url
-	private String url;
-	
-	public Menu() {
-	}
-	
-	@Column(length = 32,nullable = false)
-	public String getParentId() {
-		return parentId;
-	}
-
-	public void setParentId(String parentId) {
-		this.parentId = parentId;
-	}
-	
-	@Column(length = 50,nullable = false)
-	public String getMenuName() {
-		return menuName;
-	}
-
-	public void setMenuName(String menuName) {
-		this.menuName = menuName;
-	}
-	
-	
-	@Column(length = 3,nullable = false)
-	public Integer getDispalyIndex() {
-		return dispalyIndex;
-	}
-
-	public void setDispalyIndex(Integer dispalyIndex) {
-		this.dispalyIndex = dispalyIndex;
-	}
+	/**
+	 * url
+	 */
 	@Column(length = 500)
-	public String getUrl() {
-		return url;
-	}
+	private String url;
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
-	@OneToMany(mappedBy = "menu",cascade={CascadeType.ALL},fetch = FetchType.LAZY)
-	public List<Permission> getPermissions() {
-		return permissions;
-	}
-	
-	public void setPermissions(List<Permission> permissions) {
-		this.permissions = permissions;
+	public Menu() {
 	}
 
 }

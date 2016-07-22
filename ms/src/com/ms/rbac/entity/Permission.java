@@ -11,75 +11,51 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import com.ms.common.entity.BaseEntity;
 
 @Entity
 @Table(name = "RBAC_PERMISSION")
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class Permission extends BaseEntity {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7721880126937071356L;
-	//父许可id
+	/**
+	 * 涓婄骇id
+	 */
+	@Column(length = 32, nullable = false)
 	private String parentId;
-	//许可名称
+	/**
+	 * 璁稿彲鍚嶇О
+	 */
+	@Column(length = 50, nullable = false)
 	private String permissionName;
-	//许可地址
+	/**
+	 * url址
+	 */
+	@Column(length = 500)
 	private String url;
-	//菜单
+	/**
+	 * 鑿滃崟
+	 */
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "menuId", nullable = false)
 	private Menu menu;
-	//资源
-	//private Resource resource
-	//角色许可
+	// 锟斤拷源
+	// private Resource resource
+	/**
+	 * 瑙掕壊璁稿彲
+	 */
+	@OneToMany(mappedBy = "permission", cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
 	private List<RolePermission> rps;
-	
+
 	public Permission() {
 	}
-	
-	@Column(length = 32,nullable = false)
-	public String getParentId() {
-		return parentId;
-	}
 
-	public void setParentId(String parentId) {
-		this.parentId = parentId;
-	}
-
-	@Column(length = 50,nullable = false)
-	public String getPermissionName() {
-		return permissionName;
-	}
-
-	public void setPermissionName(String permissionName) {
-		this.permissionName = permissionName;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-	
-	@ManyToOne(fetch = FetchType.EAGER) 
-	@JoinColumn(name = "menuId", nullable = false)
-	public Menu getMenu() {
-		return menu;
-	}
-
-	public void setMenu(Menu menu) {
-		this.menu = menu;
-	}
-	
-	@OneToMany(mappedBy = "permission",cascade = {CascadeType.ALL},
-			fetch = FetchType.LAZY) 
-	public List<RolePermission> getRps() {
-		return rps;
-	}
-	
-	public void setRps(List<RolePermission> rps) {
-		this.rps = rps;
-	}
 }

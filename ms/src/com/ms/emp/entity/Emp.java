@@ -9,28 +9,28 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 import com.ms.common.entity.BaseEntity;
 import com.ms.rbac.entity.Group;
 import com.ms.rbac.entity.User;
+
 @Entity
 @Table(name = "EMP")
+@Data
 public class Emp extends BaseEntity {
 
 	/**
-	 * Ô±¹¤ÐÅÏ¢ÊµÌåÀà
+	 * Ô±ï¿½ï¿½ï¿½ï¿½Ï¢Êµï¿½ï¿½ï¿½ï¿½
 	 */
 	private static final long serialVersionUID = -7692262598266462690L;
-	//Ô±¹¤ÐÕÃû
+	// Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private String empName;
-	//²¿ÃÅ
+	// ï¿½ï¿½ï¿½ï¿½
 	private Group group;
-	//ÓÃ»§
+	// ï¿½Ã»ï¿½
 	private User user;
-	
-	
-	public Emp() {
-	}
-	
+
 	@Column(length = 50)
 	public String getEmpName() {
 		return empName;
@@ -39,7 +39,8 @@ public class Emp extends BaseEntity {
 	public void setEmpName(String empName) {
 		this.empName = empName;
 	}
-	@ManyToOne(fetch = FetchType.EAGER) 
+
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "groupId", nullable = false)
 	public Group getGroup() {
 		return group;
@@ -48,14 +49,14 @@ public class Emp extends BaseEntity {
 	public void setGroup(Group group) {
 		this.group = group;
 	}
-	@OneToOne(mappedBy = "emp",cascade = {CascadeType.ALL},
-			fetch = FetchType.LAZY) 
+
+	@OneToOne(mappedBy = "emp", cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
 	public User getUser() {
 		return user;
 	}
-	
+
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
 }

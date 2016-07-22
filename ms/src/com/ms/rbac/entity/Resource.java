@@ -4,51 +4,38 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import com.ms.common.entity.BaseEntity;
 
 @Entity
 @Table(name = "RBAC_RESOURCE")
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class Resource extends BaseEntity {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2830587237302880511L;
-	//父资源id
+	/**
+	 * 涓婄骇id
+	 */
+	@Column(length = 32, nullable = false)
 	private String parentId;
-	//资源名称
+	/**
+	 * 璧勬簮鍚嶇О
+	 */
+	@Column(length = 50, nullable = false)
 	private String resourceName;
-	//url
-	private String url;
-	
-	public Resource() {
-	}
-	
-	@Column(length = 32,nullable = false)
-	public String getParentId() {
-		return parentId;
-	}
-
-	public void setParentId(String parentId) {
-		this.parentId = parentId;
-	}
-	
-	@Column(length = 50,nullable = false)
-	public String getResourceName() {
-		return resourceName;
-	}
-
-	public void setResourceName(String resourceName) {
-		this.resourceName = resourceName;
-	}
-	
+	/**
+	 * url
+	 */
 	@Column(length = 500)
-	public String getUrl() {
-		return url;
-	}
+	private String url;
 
-	public void setUrl(String url) {
-		this.url = url;
+	public Resource() {
 	}
 
 }

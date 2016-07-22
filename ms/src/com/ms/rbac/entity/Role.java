@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.ms.common.entity.BaseEntity;
+
 @Entity
 @Table(name = "RBAC_ROLE")
 public class Role extends BaseEntity {
@@ -18,52 +19,28 @@ public class Role extends BaseEntity {
 	 * 
 	 */
 	private static final long serialVersionUID = -1719051428407174595L;
-	
-	//角色名称
-	private String roleName;
-	//父角色id
+	/**
+	 * 涓婄骇id
+	 */
+	@Column(length = 32, nullable = false)
 	private String parentId;
-	//用户角色
+	/**
+	 * 瑙掕壊鍚嶇О
+	 */
+	@Column(length = 50, nullable = false)
+	private String roleName;
+	/**
+	 * 鐢ㄦ埛瑙掕壊
+	 */
+	@OneToMany(mappedBy = "role", cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
 	private List<UserRole> userRoles;
-	//角色许可
+	/**
+	 * 鐢ㄦ埛璁稿彲
+	 */
+	@OneToMany(mappedBy = "permission", cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
 	private List<RolePermission> rps;
 
 	public Role() {
 	}
-	
-	@Column(length = 50)
-	public String getRoleName() {
-		return roleName;
-	}
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
-	}
-	@Column(length = 50)
-	public String getParentId() {
-		return parentId;
-	}
-	public void setParentId(String parentId) {
-		this.parentId = parentId;
-	}
-	
-	@OneToMany(mappedBy = "role",cascade = {CascadeType.ALL},
-			fetch = FetchType.LAZY) 
-	public List<UserRole> getUserRoles() {
-		return userRoles;
-	}
-	
-	public void setUserRoles(List<UserRole> userRoles) {
-		this.userRoles = userRoles;
-	}
-	
-	@OneToMany(mappedBy = "permission",cascade = {CascadeType.ALL},
-			fetch = FetchType.LAZY) 
-	public List<RolePermission> getRps() {
-		return rps;
-	}
-	
-	public void setRps(List<RolePermission> rps) {
-		this.rps = rps;
-	}
-	
+
 }

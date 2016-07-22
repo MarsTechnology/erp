@@ -22,21 +22,27 @@ public class BaseEntity implements Serializable {
 	/**
 	 * id 采用uuid生成方式
 	 */
-
+	@Id
+	@Column(length = 32)
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid")
 	private String id;
 	/**
 	 * 每条数据的创建时间
 	 */
-
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable = false)
 	private Date createTime;
 	/**
 	 * 数据在做更新操作时的时间
 	 */
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date modifyTime;
 	/**
 	 * 数据创建人
 	 */
+	@Column(length = 32, nullable = false)
 	private String createUser;
 
 	public BaseEntity() {
@@ -52,10 +58,6 @@ public class BaseEntity implements Serializable {
 		this.createUser = createUser;
 	}
 
-	@Id
-	@Column(length = 32)
-	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid")
 	public String getId() {
 		return id;
 	}
@@ -64,8 +66,6 @@ public class BaseEntity implements Serializable {
 		this.id = id;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = false)
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -74,7 +74,6 @@ public class BaseEntity implements Serializable {
 		this.createTime = createTime;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
 	public Date getModifyTime() {
 		return modifyTime;
 	}
@@ -83,7 +82,6 @@ public class BaseEntity implements Serializable {
 		this.modifyTime = modifyTime;
 	}
 
-	@Column(length = 32, nullable = false)
 	public String getCreateUser() {
 		return createUser;
 	}

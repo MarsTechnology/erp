@@ -24,31 +24,36 @@ import com.ms.rbac.service.UserService;
 public class NavigatorController {
 	@Autowired
 	private UserService userService;
-	
+
 	@RequestMapping(value = "/validate", method = RequestMethod.GET)
 	@ResponseBody
-	public ModelAndView authenticate(@RequestParam(required = false, value = "username") String username,
-			@RequestParam(required = false, value = "password") String password,HttpServletRequest request, ServletResponse servletResponse) {
+	public ModelAndView authenticate(
+			@RequestParam(required = false, value = "username") final String username,
+			@RequestParam(required = false, value = "password") final String password,
+			final HttpServletRequest request,
+			final ServletResponse servletResponse) {
 		User dbuser = null;
 		ModelAndView mv = null;
-		Response response = new Response();
+		final Response response = new Response();
 		dbuser = userService.getUserBylogName(username);
-		HttpSession session = request.getSession();
-		if (dbuser != null ) {
+		final HttpSession session = request.getSession();
+		if (dbuser != null) {
 			// login success
 			if (password.equals(dbuser.getPassword())) {
 				response.setStatus(Status.SUCCESS);
 				response.setMessage(ErrorMessageConstants.LOGIN_SUCCESS);
-				mv = new ModelAndView("redirect:rbac/main", "response", response);
+				mv = new ModelAndView("redirect:rbac/main", "response",
+						response);
 				session.setAttribute(Constants.SESSION_USER_KEY, dbuser.getId());
-				session.setAttribute(Constants.SESSION_GROUP_KEY, dbuser.getGroup().getId());
-			}else {
-				//password error
+				session.setAttribute(Constants.SESSION_GROUP_KEY, dbuser
+						.getGroup().getId());
+			} else {
+				// password error
 				response.setStatus(Status.FAIL);
 				response.setMessage(ErrorMessageConstants.AUTHENTICATION_ERROR);
 				mv = new ModelAndView("redirect:/", "response", response);
 			}
-		}else {
+		} else {
 			// user not exist
 			response.setStatus(Status.FAIL);
 			response.setMessage(ErrorMessageConstants.USERNOTEXIST_ERROR);
@@ -56,28 +61,31 @@ public class NavigatorController {
 		}
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/logout")
 	@ResponseBody
-	public ModelAndView logout(HttpServletRequest request) {
-		HttpSession session = request.getSession();
+	public ModelAndView logout(final HttpServletRequest request) {
+		final HttpSession session = request.getSession();
 		session.invalidate();
-		ModelAndView mv =  new ModelAndView("redirect:/");
+		final ModelAndView mv = new ModelAndView("redirect:/");
 		return mv;
 	}
-	
+
 	/**
 	 * 根据登录员权限进行菜单展示
+	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/menuJson", method = RequestMethod.GET, produces = {"text/json;charset=UTF-8"})
-	public @ResponseBody String getMenuJson(HttpSession session){
+	@RequestMapping(value = "/menuJson", method = RequestMethod.GET, produces = { "text/json;charset=UTF-8" })
+	public @ResponseBody
+	String getMenuJson(final HttpSession session) {
 		// 登录员id
-		String userId = (String) session.getAttribute(Constants.SESSION_USER_KEY);
-		//根据登录员id获取对应的权限，进行菜单展示
-		
-		String temp = "[{\"id\":1, \"pid\":0, \"name\":\"权限管理\", \"open\":\"false\"},"
-				+ "{\"id\":101, \"pid\":1, \"name\":\"用户组管理\", \"file\":\"/rbac/groups\"},"
+		final String userId = (String) session
+				.getAttribute(Constants.SESSION_USER_KEY);
+		// 根据登录员id获取对应的权限，进行菜单展示
+
+		final String temp = "[{\"id\":1, \"pid\":0, \"name\":\"权限管理\", \"open\":\"false\"},"
+				+ "{\"id\":101, \"pid\":1, \"name\":\"用户组管理\", \"file\":\"/rbac/groupController/groups\"},"
 				+ "{\"id\":102, \"pid\":1, \"name\":\"用户管理\", \"file\":\"core/simpleData\"},"
 				+ "{\"id\":103, \"pid\":1, \"name\":\"角色管理\", \"file\":\"core/noline\"},"
 				+ "{\"id\":104, \"pid\":1, \"name\":\"用户授权\", \"file\":\"core/noicon\"},"

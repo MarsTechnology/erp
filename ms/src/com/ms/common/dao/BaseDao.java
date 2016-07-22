@@ -345,4 +345,13 @@ public interface BaseDao<T> {
 	public <V> List<V> findListByMax(CharSequence queryString, int maxResults,
 			Map<String, Object> params);
 
+	/**
+	 * 根据hql 和传入条件查询
+	 * 
+	 * @param hql
+	 * @param params
+	 * @return
+	 */
+	public List<T> findByHQL(String hql, Object... params);
+
 }

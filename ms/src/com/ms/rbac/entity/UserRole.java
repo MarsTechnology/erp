@@ -6,42 +6,36 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import com.ms.common.entity.BaseEntity;
 
 @Entity
 @Table(name = "RBAC_USER_ROLE")
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class UserRole extends BaseEntity {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2745625849626114020L;
-	//ÓÃ»§
+	/**
+	 * ç”¨æˆ·
+	 */
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId", nullable = false)
 	private User user;
-	//½ÇÉ«
+	/**
+	 * è§’è‰²
+	 */
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "roleId", nullable = false)
 	private Role role;
-	
+
 	public UserRole() {
 
 	}
-	@ManyToOne(fetch = FetchType.EAGER) 
-	@JoinColumn(name = "userId", nullable = false)
-	public User getUser() {
-		return user;
-	}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
-	
-	@ManyToOne(fetch = FetchType.EAGER) 
-	@JoinColumn(name = "roleId", nullable = false)
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
-	
 }

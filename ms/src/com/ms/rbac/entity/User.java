@@ -44,13 +44,51 @@ public class User extends BaseEntity {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "groupId", nullable = false)
 	private Group group;
+
 	/**
 	 * 用户角色
 	 */
 	@OneToMany(mappedBy = "user", cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
 	private List<UserRole> userRoles;
 
-	public User() {
+	public String getLogName() {
+		return logName;
+	}
+
+	public void setLogName(final String logName) {
+		this.logName = logName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(final String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(final String email) {
+		this.email = email;
+	}
+
+	public Group getGroup() {
+		return group;
+	}
+
+	public void setGroup(final Group group) {
+		this.group = group;
+	}
+
+	public List<UserRole> getUserRoles() {
+		return userRoles;
+	}
+
+	public void setUserRoles(final List<UserRole> userRoles) {
+		this.userRoles = userRoles;
 	}
 
 }

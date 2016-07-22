@@ -16,32 +16,20 @@ public class RolePermission extends BaseEntity {
 	 * 
 	 */
 	private static final long serialVersionUID = -3586559736162858597L;
-	//Ω«…´id
-	private Role role;
-	//–Ìø…id
-	private Permission permission;
-	
-	public RolePermission() {
-	}
-	
-	@ManyToOne(fetch = FetchType.EAGER) 
+	/**
+	 * ËßíËâ≤
+	 */
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "roleId", nullable = false)
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
-	
-	@ManyToOne(fetch = FetchType.EAGER) 
+	private Role role;
+	/**
+	 * ËÆ∏ÂèØ
+	 */
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "permissionId", nullable = false)
-	public Permission getPermission() {
-		return permission;
-	}
+	private Permission permission;
 
-	public void setPermission(Permission permission) {
-		this.permission = permission;
+	public RolePermission() {
 	}
 
 }

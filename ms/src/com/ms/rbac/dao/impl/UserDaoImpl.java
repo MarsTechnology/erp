@@ -9,12 +9,4 @@ import com.ms.rbac.entity.User;
 @Repository
 public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 
-	@Override
-	public User getUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
 }

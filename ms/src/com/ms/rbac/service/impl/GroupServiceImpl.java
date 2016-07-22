@@ -19,16 +19,11 @@ public class GroupServiceImpl implements GroupService {
 	private GroupDao groupDao;
 
 	@Override
-	public void saveGroup(Group group) {
+	public void saveGroup(final Group group) {
 		group.setCreateTime(new Date());
 		group.setModifyTime(new Date());
 		group.setCreateUser("111");
-		groupDao.save(group);
-	}
-
-	@Override
-	public void updateGroup(Group group) {
-
+		groupDao.saveOrUpdate(group);
 	}
 
 	@Override

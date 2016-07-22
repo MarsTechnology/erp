@@ -17,7 +17,7 @@ import com.ms.common.entity.BaseEntity;
 @Entity
 @Table(name = "RBAC_GROUP")
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class Group extends BaseEntity {
 
 	/**

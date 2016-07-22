@@ -6,6 +6,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +17,11 @@ import com.ms.common.Pager;
 import com.ms.common.Pagination;
 import com.ms.common.dao.BaseDao;
 
+@Resource(name = "baseDaoImpl")
 public class BaseDaoImpl<T> implements BaseDao<T> {
-	// sessionFactory
+	/**
+	 * sessionFactory
+	 */
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -25,7 +31,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	private final Class<T> clazz;
 
 	public BaseDaoImpl() {
-		ParameterizedType pt = (ParameterizedType) getClass()
+		final ParameterizedType pt = (ParameterizedType) getClass()
 				.getGenericSuperclass();
 		this.clazz = (Class<T>) pt.getActualTypeArguments()[0];
 	}
@@ -34,7 +40,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	 * 
 	 * @param sessionFactory
 	 */
-	public void setSessionFactory(SessionFactory sessionFactory) {
+	public void setSessionFactory(final SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
@@ -50,7 +56,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	 * 
 	 */
 	@Override
-	public void save(T t) {
+	public void save(final T t) {
 		getCurrentSession().save(t);
 	}
 
@@ -58,7 +64,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	 * 
 	 */
 	@Override
-	public void deleteById(Serializable id) {
+	public void deleteById(final Serializable id) {
 
 	}
 
@@ -66,7 +72,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	 * 
 	 */
 	@Override
-	public void update(T t) {
+	public void update(final T t) {
 
 	}
 
@@ -74,7 +80,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	 * 
 	 */
 	@Override
-	public void saveOrUpdate(T t) {
+	public void saveOrUpdate(final T t) {
 		getCurrentSession().saveOrUpdate(t);
 	}
 
@@ -82,7 +88,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	 * 
 	 */
 	@Override
-	public T getById(Serializable id) {
+	public T getById(final Serializable id) {
 		return (T) getCurrentSession().get(clazz, id);
 	}
 
@@ -90,13 +96,13 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	 * 
 	 */
 	@Override
-	public List<T> getByCondition(Map<String, String> map) {
-		StringBuffer hql = new StringBuffer();
+	public List<T> getByCondition(final Map<String, String> map) {
+		final StringBuffer hql = new StringBuffer();
 		hql.append("from");
 		hql.append(clazz.getName());
 		hql.append("where 1= 1");
 		if (null != map) {
-			for (Map.Entry<String, String> entry : map.entrySet()) {
+			for (final Map.Entry<String, String> entry : map.entrySet()) {
 				hql.append(" and ");
 				hql.append(entry.getKey());
 				hql.append(entry.getValue());
@@ -110,195 +116,207 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	 * 
 	 */
 	@Override
-	public Pager getPageByCondition(Map<String, String> map) {
+	public Pager getPageByCondition(final Map<String, String> map) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Object> getBySQL(String sql) {
+	public List<Object> getBySQL(final String sql) {
 		return sessionFactory.getCurrentSession().createSQLQuery(sql).list();
 	}
 
 	@Override
-	public List<T> getByProperty(String propertyName, Object value) {
-		String hql = "from " + clazz.getName() + " where " + propertyName
+	public List<T> getByProperty(final String propertyName, final Object value) {
+		final String hql = "from " + clazz.getName() + " where " + propertyName
 				+ " = ?";
 		return sessionFactory.getCurrentSession().createQuery(hql)
 				.setParameter(0, value).list();
 	}
 
 	@Override
-	public void saveAll(Collection<?> entities) {
+	public void saveAll(final Collection<?> entities) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void deleteAll(Collection<?> entities) {
+	public void deleteAll(final Collection<?> entities) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void updateAll(Collection<?> entity) {
+	public void updateAll(final Collection<?> entity) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void saveOrUpdateAll(Collection<?> entities) {
+	public void saveOrUpdateAll(final Collection<?> entities) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public <T> T get(Class<T> entityClass, Serializable id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public <T> T get(CharSequence queryString, Map<String, Object> params) {
+	public <T> T get(final Class<T> entityClass, final Serializable id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <T> T get(CharSequence queryString, Object... params) {
+	public <T> T get(final CharSequence queryString,
+			final Map<String, Object> params) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <T> List<T> findList(CharSequence queryString, Object... params) {
+	public <T> T get(final CharSequence queryString, final Object... params) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <T> List<T> findList(CharSequence queryString,
-			Map<String, Object> params) {
+	public <T> List<T> findList(final CharSequence queryString,
+			final Object... params) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <T> Pagination<T> findPagination(CharSequence queryString,
-			int pageIndex, int pageSize, Object... params) {
+	public <T> List<T> findList(final CharSequence queryString,
+			final Map<String, Object> params) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <T> Pagination<T> findPagination(CharSequence queryString,
-			Map<String, Object> params, int pageIndex, int pageSize) {
+	public <T> Pagination<T> findPagination(final CharSequence queryString,
+			final int pageIndex, final int pageSize, final Object... params) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <T> Pagination<T> findPagination(CharSequence queryString,
-			CharSequence countString, int pageIndex, int pageSize,
-			Object... params) {
+	public <T> Pagination<T> findPagination(final CharSequence queryString,
+			final Map<String, Object> params, final int pageIndex,
+			final int pageSize) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <T> Pagination<T> findPagination(CharSequence queryString,
-			CharSequence countString, Map<String, Object> params,
-			int pageIndex, int pageSize) {
+	public <T> Pagination<T> findPagination(final CharSequence queryString,
+			final CharSequence countString, final int pageIndex,
+			final int pageSize, final Object... params) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <T> Pagination<T> findSqlPagination(CharSequence queryString,
-			CharSequence countString, Map<String, Object> params,
-			int pageIndex, int pageSize) {
+	public <T> Pagination<T> findPagination(final CharSequence queryString,
+			final CharSequence countString, final Map<String, Object> params,
+			final int pageIndex, final int pageSize) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void executeSql(String sql) {
+	public <T> Pagination<T> findSqlPagination(final CharSequence queryString,
+			final CharSequence countString, final Map<String, Object> params,
+			final int pageIndex, final int pageSize) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void executeSql(final String sql) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public int executeSqlUpdate(String sql) {
+	public int executeSqlUpdate(final String sql) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int executeUpdate(String hql) {
+	public int executeUpdate(final String hql) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public T saveEntity(T o) {
+	public T saveEntity(final T o) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public T insert(T o) {
+	public T insert(final T o) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void save(List<T> list) {
+	public void save(final List<T> list) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void insert(List<T> list) {
+	public void insert(final List<T> list) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void delete(List<T> list) {
+	public void delete(final List<T> list) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void update(List<T> list) {
+	public void update(final List<T> list) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public List<T> findByProperty(String name, Object value) {
+	public List<T> findByProperty(final String name, final Object value) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<T> findByProperty(Map<String, Object> conditionMap) {
+	public List<T> findByProperty(final Map<String, Object> conditionMap) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <V> List<V> findListByMax(CharSequence queryString, int maxResults,
-			Object... params) {
+	public <V> List<V> findListByMax(final CharSequence queryString,
+			final int maxResults, final Object... params) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <V> List<V> findListByMax(CharSequence queryString, int maxResults,
-			Map<String, Object> params) {
+	public <V> List<V> findListByMax(final CharSequence queryString,
+			final int maxResults, final Map<String, Object> params) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<T> findByHQL(final String hql, final Object... params) {
+		final Query query = getCurrentSession().createQuery(hql);
+		for (int i = 0; params != null && i < params.length; i++) {
+			query.setParameter(i, params);
+		}
+		return query.list();
 	}
 
 }
