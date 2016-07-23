@@ -32,12 +32,6 @@ public class RbacController {
 		return new ModelAndView("rbac/main");
 	}
 
-	@RequestMapping("/toAddUser")
-	public String toAddUser() {
-		userService.initAddUser();
-		return "/rbac/addUser";
-	}
-
 	/**
 	 * 
 	 * @return

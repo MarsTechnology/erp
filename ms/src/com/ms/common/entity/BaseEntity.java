@@ -46,7 +46,7 @@ public class BaseEntity implements Serializable {
 	private String createUser;
 
 	public BaseEntity() {
-		super();
+
 	}
 
 	public BaseEntity(final String id, final Date createTime,

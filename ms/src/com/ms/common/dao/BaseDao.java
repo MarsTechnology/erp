@@ -168,7 +168,7 @@ public interface BaseDao<T> {
 	 *            可选的查询参数
 	 * @return 实体列表
 	 */
-	<T> List<T> findList(CharSequence queryString, Object... params);
+	<T> List<T> getList(CharSequence queryString, Object... params);
 
 	/**
 	 * 
@@ -342,7 +342,7 @@ public interface BaseDao<T> {
 	 *            可选的查询参数
 	 * @return 实体列表
 	 */
-	public <V> List<V> findListByMax(CharSequence queryString, int maxResults,
+	<V> List<V> findListByMax(CharSequence queryString, int maxResults,
 			Map<String, Object> params);
 
 	/**
@@ -352,6 +352,13 @@ public interface BaseDao<T> {
 	 * @param params
 	 * @return
 	 */
-	public List<T> findByHQL(String hql, Object... params);
+	List<T> findByHQL(String hql, Object... params);
+
+	/**
+	 * 查询所有单个实体
+	 * 
+	 * @return 单个实体集合
+	 */
+	List<T> getAll();
 
 }

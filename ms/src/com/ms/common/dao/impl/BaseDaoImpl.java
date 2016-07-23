@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ms.common.Pager;
 import com.ms.common.Pagination;
+import com.ms.common.constants.Constants;
 import com.ms.common.dao.BaseDao;
 
 @Resource(name = "baseDaoImpl")
@@ -65,7 +66,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	 */
 	@Override
 	public void deleteById(final Serializable id) {
-
+		getCurrentSession().delete(this.getById(id));
 	}
 
 	/**
@@ -98,7 +99,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	@Override
 	public List<T> getByCondition(final Map<String, String> map) {
 		final StringBuffer hql = new StringBuffer();
-		hql.append("from");
+		hql.append(Constants.SQL_FROM);
 		hql.append(clazz.getName());
 		hql.append("where 1= 1");
 		if (null != map) {
@@ -109,7 +110,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 			}
 		}
 		return sessionFactory.getCurrentSession()
-				.createQuery("from " + clazz.getName()).list();
+				.createQuery(Constants.SQL_FROM + clazz.getName()).list();
 	}
 
 	/**
@@ -128,8 +129,8 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	@Override
 	public List<T> getByProperty(final String propertyName, final Object value) {
-		final String hql = "from " + clazz.getName() + " where " + propertyName
-				+ " = ?";
+		final String hql = Constants.SQL_FROM + clazz.getName() + " where "
+				+ propertyName + " = ?";
 		return sessionFactory.getCurrentSession().createQuery(hql)
 				.setParameter(0, value).list();
 	}
@@ -178,7 +179,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	}
 
 	@Override
-	public <T> List<T> findList(final CharSequence queryString,
+	public <T> List<T> getList(final CharSequence queryString,
 			final Object... params) {
 		// TODO Auto-generated method stub
 		return null;
@@ -317,6 +318,12 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 			query.setParameter(i, params);
 		}
 		return query.list();
+	}
+
+	@Override
+	public List<T> getAll() {
+		return getCurrentSession().createQuery(
+				Constants.SQL_FROM + clazz.getName()).list();
 	}
 
 }

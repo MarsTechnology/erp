@@ -1,5 +1,6 @@
 package com.ms.rbac.controller;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,8 +56,24 @@ public class GroupController {
 	public ModelAndView saveGroup(final HttpServletRequest request,
 			final Group group) {
 		groupService.saveGroup(group);
-		final ModelAndView mv = new ModelAndView("redirect:/rbac/group/groups");
+		final ModelAndView mv = new ModelAndView(
+				"redirect:/rbac/groupController/groups");
 		return mv;
 	}
 
+	/**
+	 * 删除部门
+	 * 
+	 * @param request
+	 * @param group
+	 * @return
+	 */
+	@RequestMapping("deleteGroup")
+	public ModelAndView deleteGroup(final HttpServletRequest request,
+			final Serializable id) {
+
+		groupService.delById(id);
+		final ModelAndView mv = new ModelAndView("redirect:/rbac/group/groups");
+		return mv;
+	}
 }

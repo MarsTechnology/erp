@@ -1,10 +1,12 @@
 package com.ms.rbac.service.impl;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ms.rbac.dao.GroupDao;
 import com.ms.rbac.dao.UserDao;
@@ -12,6 +14,7 @@ import com.ms.rbac.entity.User;
 import com.ms.rbac.service.UserService;
 
 @Service("userServiceImpl")
+@Transactional
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -22,23 +25,23 @@ public class UserServiceImpl implements UserService {
 	public UserServiceImpl() {
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void saveUser(final User user) {
-		userDao.save(user);
-	}
-
-	@Override
-	public void update(final User user) {
-		// TODO Auto-generated method stub
-
+		user.setCreateTime(new Date());
+		user.setModifyTime(new Date());
+		user.setCreateUser("admin");
+		userDao.saveOrUpdate(user);
 	}
 
 	/**
 	 * 
 	 */
 	@Override
-	public void initAddUser() {
-		groupDao.getByCondition(null);
+	public void update(final User user) {
+		userDao.update(user);
 
 	}
 
@@ -60,4 +63,11 @@ public class UserServiceImpl implements UserService {
 		return userDao.getById(id);
 	}
 
+	/**
+	 * 
+	 */
+	@Override
+	public List<User> getAllUser() {
+		return userDao.getAll();
+	}
 }

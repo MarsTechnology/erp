@@ -1,5 +1,6 @@
 package com.ms.rbac.service.impl;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,9 @@ public class GroupServiceImpl implements GroupService {
 	@Autowired
 	private GroupDao groupDao;
 
+	/**
+	 * 
+	 */
 	@Override
 	public void saveGroup(final Group group) {
 		group.setCreateTime(new Date());
@@ -26,9 +30,29 @@ public class GroupServiceImpl implements GroupService {
 		groupDao.saveOrUpdate(group);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public List<Group> getAll() {
 		return groupDao.getByCondition(null);
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public void delById(final Serializable id) {
+		groupDao.deleteById(id);
+
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public Group getById(final Serializable id) {
+		return groupDao.getById(id);
 	}
 
 }

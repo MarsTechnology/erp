@@ -1,6 +1,7 @@
 package com.ms.rbac.service;
 
 import java.io.Serializable;
+import java.util.List;
 
 import com.ms.rbac.entity.User;
 
@@ -21,11 +22,6 @@ public interface UserService {
 	void update(User user);
 
 	/**
-	 * 初始化添加用户
-	 */
-	void initAddUser();
-
-	/**
 	 * 根据用户名获得用户对象
 	 * 
 	 * @param logName
@@ -40,5 +36,12 @@ public interface UserService {
 	 * @return
 	 */
 	User getUserByid(Serializable id);
+
+	/**
+	 * 查询所有用户
+	 * 
+	 * @return 所有用户集合
+	 */
+	List<User> getAllUser();
 
 }

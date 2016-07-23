@@ -1,22 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page language="java" import="java.util.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ include  file="/WEB-INF/common/common.jsp" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-CN">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script src="${pageContext.request.contextPath}/webresource/jQuery/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/webresource/bootstrap/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/webresource/bootstrap/js/jquery.ztree.all-3.5.min.js"></script>
-<script src="${pageContext.request.contextPath}/webresource/bootstrap/js/jquery.dataTables.js"></script>
-<link href="${pageContext.request.contextPath}/webresource/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
-<link href="${pageContext.request.contextPath}/webresource/bootstrap/css/metro.css" rel="stylesheet"></link>
-<link href="${pageContext.request.contextPath}/webresource/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet"></link>
 
 <style>
 .none-padding {
 	padding: 0 !important;
-    margin: 0 !important;
 }
 </style>
 </head>
@@ -28,7 +21,13 @@ $(document).ready(function() {
 		 
 	});
 	
+	function del1(id){
+		alert(1);
+	}
+	
 });
+
+
 
 </script>
 <div class="container-fluid none-padding">
@@ -48,7 +47,8 @@ $(document).ready(function() {
 						<td>${g.id }</td>
 						<td>${g.groupName }</td>
 						<td>${g.parentId }</td>
-						<td>删除 修改</td>
+						<td><a   href="javascript:void(0)" onclick="del1(${g.id })" >删除</a></td>
+						<td>修改</td>
 					</tr>
      			</c:forEach>
 			</tbody>
