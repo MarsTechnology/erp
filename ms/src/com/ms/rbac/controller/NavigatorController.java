@@ -87,7 +87,7 @@ public class NavigatorController {
 		final String temp = "[{\"id\":1, \"pid\":0, \"name\":\"权限管理\", \"open\":\"false\"},"
 				+ "{\"id\":101, \"pid\":1, \"name\":\"用户组管理\", \"file\":\"/rbac/groupController/groups\"},"
 				+ "{\"id\":102, \"pid\":1, \"name\":\"用户管理\", \"file\":\"/rbac/userController/userList\"},"
-				+ "{\"id\":103, \"pid\":1, \"name\":\"角色管理\", \"file\":\"core/noline\"},"
+				+ "{\"id\":103, \"pid\":1, \"name\":\"角色管理\", \"file\":\"/rbac/roleController/roleList\"},"
 				+ "{\"id\":104, \"pid\":1, \"name\":\"用户授权\", \"file\":\"core/noicon\"},"
 				+ "{\"id\":2, \"pid\":0, \"name\":\"待添加\", \"open\":\"false\"},"
 				+ "{\"id\":201, \"pid\":2, \"name\":\"待添加\", \"file\":\"excheck/checkbox\"}]";
