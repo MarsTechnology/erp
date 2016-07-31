@@ -7,13 +7,13 @@ import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import com.ms.common.entity.BaseEntity;
+import com.ms.common.entity.BaseEntityUUID;
 
 @Entity
 @Table(name = "RBAC_RESOURCE")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Resource extends BaseEntity {
+public class Resource extends BaseEntityUUID {
 
 	/**
 	 * 

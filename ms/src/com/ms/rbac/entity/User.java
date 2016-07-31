@@ -14,13 +14,13 @@ import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import com.ms.common.entity.BaseEntity;
+import com.ms.common.entity.BaseEntityUUID;
 
 @Entity
 @Table(name = "RBAC_USER")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class User extends BaseEntity {
+public class User extends BaseEntityUUID {
 
 	private static final long serialVersionUID = 2698479255878048424L;
 	/**

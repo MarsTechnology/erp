@@ -17,7 +17,7 @@ import com.ms.rbac.service.UserService;
 
 /**
  * @author biantd 2016年7月23日
- * @describe
+ * @describe 用户原子操作controller
  */
 @Controller
 @RequestMapping("/rbac/userController")

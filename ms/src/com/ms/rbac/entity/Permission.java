@@ -14,13 +14,13 @@ import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import com.ms.common.entity.BaseEntity;
+import com.ms.common.entity.BaseEntityUUID;
 
 @Entity
 @Table(name = "RBAC_PERMISSION")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Permission extends BaseEntity {
+public class Permission extends BaseEntityUUID {
 
 	/**
 	 * 

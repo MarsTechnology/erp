@@ -9,11 +9,16 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.ms.common.entity.BaseEntity;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import com.ms.common.entity.BaseEntityUUID;
 
 @Entity
 @Table(name = "RBAC_ROLE")
-public class Role extends BaseEntity {
+@Data
+@EqualsAndHashCode(callSuper = false)
+public class Role extends BaseEntityUUID {
 
 	/**
 	 * 

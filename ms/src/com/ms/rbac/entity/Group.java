@@ -12,13 +12,13 @@ import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import com.ms.common.entity.BaseEntity;
+import com.ms.common.entity.BaseEntityUUID;
 
 @Entity
 @Table(name = "RBAC_GROUP")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Group extends BaseEntity {
+public class Group extends BaseEntityUUID {
 
 	/**
 	 * 

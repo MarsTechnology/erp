@@ -2,6 +2,7 @@ package com.ms.rbac.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -19,12 +20,14 @@ public class RolePermission extends BaseEntity {
 	/**
 	 * 角色
 	 */
+	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "roleId", nullable = false)
 	private Role role;
 	/**
 	 * 许可
 	 */
+	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "permissionId", nullable = false)
 	private Permission permission;
