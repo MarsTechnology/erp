@@ -1,5 +1,6 @@
 package com.ms.rbac.service.impl;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -60,6 +61,14 @@ public class RoelServiceImpl implements RoleService {
 	public List<Role> getAll() {
 
 		return roleDaoImpl.getAll();
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public Role getById(final Serializable id) {
+		return roleDaoImpl.getById(id);
 	}
 
 }

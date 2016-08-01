@@ -1,11 +1,7 @@
 package com.ms.rbac.service;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Map;
-
-import com.ms.rbac.entity.Role;
-import com.ms.rbac.entity.User;
 
 /**
  * @author biantd 2016年7月24日
@@ -25,7 +21,7 @@ public interface UserRoleService {
 	 * @param user
 	 * @param roles
 	 */
-	void saveUserRole(User user, List<Role> roles);
+	void saveUserRole(String userId, String roleIds);
 
 	/**
 	 * 根据用户id 删除用户角色
@@ -38,6 +34,6 @@ public interface UserRoleService {
 	/**
 	 * 对用户赋予角色
 	 */
-	void grantUserRole(User user, List<Role> roles);
+	void grantUserRole(final String userId, final String roleIds);
 
 }
