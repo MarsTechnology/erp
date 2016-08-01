@@ -1,7 +1,5 @@
 package com.ms.rbac.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ms.common.controller.BaseController;
-import com.ms.rbac.entity.Role;
-import com.ms.rbac.entity.User;
 import com.ms.rbac.service.UserRoleService;
 
 /**
@@ -34,13 +30,15 @@ public class UserRoleController extends BaseController {
 	@RequestMapping("userRoleView")
 	public ModelAndView getUserRoleView(final HttpServletRequest request) {
 
-		return mv("/rbac/user/userList", "map",
+		return mv("/rbac/userRole/userRole", "map",
 				userRoleServiceImpl.getUserRoleView());
 
 	}
 
 	@RequestMapping("saveUserRole")
-	public ModelAndView saveUserRole(final User user, final List<Role> roles) {
+	public ModelAndView saveUserRole(final String userId, final String roleIds) {
+
+		userRoleServiceImpl.grantUserRole(userId, roleIds);
 
 		return mv("/rbac/user/userList", "map", map);
 
